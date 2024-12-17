@@ -7,7 +7,7 @@ LABEL com.github.containers.toolbox="true" \
 
 COPY extra-packages /
 RUN zypper dup && \
-    grep -v '^#' /extra-packages | xargs zypper install 
+    grep -v '^#' /extra-packages | xargs zypper --non-interactive install 
 RUN rm /extra-packages
 
 RUN   ln -fs /bin/sh /usr/bin/sh && \
