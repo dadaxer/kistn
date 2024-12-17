@@ -6,7 +6,7 @@ LABEL com.github.containers.toolbox="true" \
       maintainer="jorge.castro@gmail.com"
 
 COPY extra-packages /
-RUN zypper update && \
+RUN zypper dup && \
     grep -v '^#' /extra-packages | xargs zypper install 
 RUN rm /extra-packages
 
