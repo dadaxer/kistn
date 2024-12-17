@@ -1,4 +1,4 @@
-FROM quay.io/toolbx-images/alpine-toolbox:edge
+FROM registry.opensuse.org/opensuse/tumbleweed:latest
 
 LABEL com.github.containers.toolbox="true" \
       usage="This image is meant to be used with the toolbox or distrobox command" \
@@ -6,9 +6,8 @@ LABEL com.github.containers.toolbox="true" \
       maintainer="jorge.castro@gmail.com"
 
 COPY extra-packages /
-RUN apk update && \
-    apk upgrade && \
-    grep -v '^#' /extra-packages | xargs apk add
+RUN zypper update && \
+    grep -v '^#' /extra-packages | xargs zypper install
 RUN rm /extra-packages
 
 RUN   ln -fs /bin/sh /usr/bin/sh && \
