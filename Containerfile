@@ -6,8 +6,9 @@ LABEL com.github.containers.toolbox="true" \
       maintainer="jorge.castro@gmail.com"
 
 COPY extra-packages /
-RUN zypper dup && \
-    grep -v '^#' /extra-packages | xargs zypper --non-interactive install 
+RUN apk update && \
+    apk upgrade && \
+    grep -v '^#' /extra-packages | xargs apk add
 RUN rm /extra-packages
 
 RUN   ln -fs /bin/sh /usr/bin/sh && \
