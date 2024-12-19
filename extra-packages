@@ -14,6 +14,6 @@ ncurses
 neovim
 npm
 plocate
-python312
+python
 starship
 zstd
